@@ -1,3 +1,4 @@
+import random
 import Card
 
 class Deck:
@@ -8,4 +9,12 @@ class Deck:
         for rank in self.ranks:
             for suite in self.suites:
                 self.Cards.append(Card(rank, suite))
+        
+    # Randomly shuffles the `Cards`
+    def deckShuffle(self):
+        self.Cards = random.shuffle(self.Cards)
+
+    # Removes and returns the first card in `Cards`
+    def topCard(self):
+        return self.Cards.pop(0)
                 
