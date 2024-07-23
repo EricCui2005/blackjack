@@ -1,6 +1,7 @@
 import random
-import Card
+from Card import Card
 
+# Class to describe a 52-card deck
 class Deck:
     def __init__(self):
         self.suites = ['Hearts', 'Diamonds', 'Spades', 'Clubs']
@@ -17,4 +18,8 @@ class Deck:
     # Removes and returns the first card in `Cards`
     def topCard(self):
         return self.Cards.pop(0)
+
+    # Returns the number of cards in `Cards`
+    def numCards(self):
+        return len(self.Cards)
                 

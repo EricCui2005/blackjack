@@ -1,3 +1,4 @@
+# Class to describe a single playing card
 class Card:
     def __init__(self, rank: int, suite: str):
 
