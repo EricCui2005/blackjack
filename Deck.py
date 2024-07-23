@@ -10,10 +10,17 @@ class Deck:
         for rank in self.ranks:
             for suite in self.suites:
                 self.Cards.append(Card(rank, suite))
+    
+    # To string method
+    def __str__(self) -> str:
+        deck = ""
+        for card in self.Cards:
+            deck += f"{str(card)}\n" 
+        return deck
         
     # Randomly shuffles the `Cards`
     def deckShuffle(self):
-        self.Cards = random.shuffle(self.Cards)
+        random.shuffle(self.Cards)
 
     # Removes and returns the first card in `Cards`
     def topCard(self):

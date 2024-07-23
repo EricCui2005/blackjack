@@ -6,6 +6,10 @@ class Card:
         self.rank = rank
         self.suite = suite
 
+    # To string method
+    def __str__(self) -> str:
+        return f"[{self.rank} of {self.suite}]"
+
     # Accessor methods
     def get_rank(self):
         return self.rank 
