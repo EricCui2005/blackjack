@@ -42,12 +42,17 @@ class Table:
         
         # Shuffling and dealing 2 cards to each player (including the dealer)
         self.gameDeck.deckShuffle()
+        self.initRound()
+
+    # Initializes the card dealing of a round   
+    def initRound(self):
         for i in range(2):
             for seat in self.seats:
                 player = self.seats[seat]
                 if player:
                     player.newCard(self.gameDeck.topCard())
             self.dealer.newCard(self.gameDeck.topCard())
+    
         
 
             

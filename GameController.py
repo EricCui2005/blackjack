@@ -18,6 +18,7 @@ class GameController:
 
         while(not table.getDeck().isEmpty()):
 
+            
             # Inputting bet
             input("Enter bet: ")
 

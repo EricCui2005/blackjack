@@ -1,5 +1,6 @@
 from modules.Player import Player
 from modules.Card import Card
+from modules.Table import Table
 from collections import Counter
 
 def test_sumPlayerHand():
@@ -19,3 +20,6 @@ def test_sumPlayerHand():
     # Two aces, other cards
     player = Player([Card('K', "Hearts"), Card('9', "Hearts"), Card('A', "Hearts"), Card('A', "Hearts")])
     assert player.sumHand() == {21, 31, 41}
+
+def test_initGame():
+
