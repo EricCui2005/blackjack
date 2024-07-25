@@ -28,7 +28,7 @@ class Player:
     
     # Function to (considering the ace rule) return all possible summings of a player's hand
     def sumHand(self):
-        sums = []
+        sums = set()
         self.sumRec(self.cards, 0, sums)
         return sums       
         
@@ -37,15 +37,17 @@ class Player:
 
         # Card list is empty
         if not cards:
-            sums.append(curSum)
+            sums.add(curSum)
             return
         
         # Recursive logic
         card = cards.pop()
-        if card.get_rank == "A":
-            self.sumRec(self, cards, curSum + 1, sums)
-            self.sumRec(self, cards, curSum + 11, sums)
+        if card.get_rank() == 'A':
+            self.sumRec(cards, curSum + 1, sums)
+            self.sumRec(cards, curSum + 11, sums)
+            cards.append(card)
         else:
-            self.sumRec(self, cards, curSum + card.rankValueKey[card.get_rank])
+            self.sumRec(cards, curSum + card.rankValueKey[card.get_rank()], sums)
+            cards.append(card)
 
         return
