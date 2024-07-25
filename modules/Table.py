@@ -1,6 +1,6 @@
-from Deck import Deck
-from Card import Card
-from Player import Player
+from modules.Deck import Deck
+from modules.Card import Card
+from modules.Player import Player
 from typing import List
 
 # Class to describe a table of blackjack

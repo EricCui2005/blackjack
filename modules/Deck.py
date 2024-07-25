@@ -1,5 +1,5 @@
 import random
-from Card import Card
+from modules.Card import Card
 
 # Class to describe a 52-card deck
 class Deck:

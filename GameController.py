@@ -1,4 +1,4 @@
-from Table import Table
+from modules.Table import Table
 
 class GameController:
 

@@ -1,6 +1,6 @@
 # Class to describe a single playing card
 class Card:
-    def __init__(self, rank: int, suite: str):
+    def __init__(self, rank: str, suite: str):
 
         # Denotes card value and suite
         self.rank = rank

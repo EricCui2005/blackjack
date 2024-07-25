@@ -1,4 +1,4 @@
-from Table import Table
+from modules.Table import Table
 
 def main():
     table = Table()
