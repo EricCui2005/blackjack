@@ -12,9 +12,27 @@ class GameController:
         self.table = Table(1, 0, 0)
         table = self.table
         table.initGame()
+        dealer = table.getDealer()
+        player = table.getPlayer(0)
         print("Take a seat at the table!")
 
-        while(not table.getDeck().isEmpty):
+        while(not table.getDeck().isEmpty()):
+
+            # Inputting bet
+            input("Enter bet: ")
+
+            # Displaying current cards
+            cardsString = ""
+            for card in player.getCards():
+                cardsString += str(card)
+            print(f"Cards: {cardsString}")
+
+            # Hit or stay
+            choice = input("Hit (1) or Stay (2): ")
+
+
+
+
 
 
 

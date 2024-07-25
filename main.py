@@ -1,9 +1,9 @@
 from modules.Table import Table
+from GameController import GameController
 
 def main():
-    table = Table()
-    table.initGame()
-    print(table)
+    game = GameController()
+    game.terminalGame()
 
 if __name__ == "__main__":
     main()

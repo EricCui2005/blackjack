@@ -2,6 +2,7 @@ from modules.Deck import Deck
 from modules.Card import Card
 from modules.Player import Player
 from typing import List
+from typing import Dict
 
 # Class to describe a table of blackjack
 class Table:
@@ -9,7 +10,7 @@ class Table:
         self.gameDeck = Deck()
         self.dealer = Player()
         self.numSeats = numSeats
-        self.seats = {0: None, 1: None, 2: None}
+        self.seats: Dict[int, Player] = {0: None, 1: None, 2: None}
         self.playerWins = 0
         self.dealerWins = 0
     
@@ -20,9 +21,13 @@ class Table:
             table += f"{str(self.seats[seat])}\n" 
         return table
     
-    # Accessor for the game deck
+    # Accessors
     def getDeck(self):
         return self.gameDeck
+    def getPlayer(self, seat: int):
+        return self.seats[seat]
+    def getDealer(self):
+        return self.dealer
             
     # Function to check for a blackjack
     def checkBlackJack(self, value):
