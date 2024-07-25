@@ -28,6 +28,8 @@ class Table:
         return self.seats[seat]
     def getDealer(self):
         return self.dealer
+    def getSeats(self):
+        return self.seats
             
     # Function to check for a blackjack
     def checkBlackJack(self, value):

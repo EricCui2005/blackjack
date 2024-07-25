@@ -23,3 +23,29 @@ def test_sumPlayerHand():
 
 def test_initGame():
 
+    # Initializing test table
+    table = Table()
+    table.initGame()
+
+    # Checking all players have two cards and all cards are different
+    properInit = True
+    cardsOnTable = set()
+    seats = table.getSeats()
+    for seat in seats:
+        player = seats[seat]
+        if len(player.getCards()) != 2:
+            properInit = False
+            break
+        for card in player.getCards():
+            if card in cardsOnTable:
+                properInit = False
+            cardsOnTable.add(card)
+
+    # Final assertion
+    assert properInit == True
+            
+
+
+
+
+
