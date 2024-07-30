@@ -44,19 +44,25 @@ def test_initGame():
     # Final assertion
     assert properInit == True
             
-def test_checkHand_WhenGivenBlackJack_CorrectlyDetects():
+def test_checkBlackjack_WhenGivenOneSumBlackjack_CorrectlyIdentifies():
+    player = Player([Card("K", "Hearts"), Card("9", "Hearts"), Card("2", "Hearts")])
+    assert player.checkBlackjack() == True
+    
+def test_checkBlackjack_WhenGivenMultiSumBlackjack_CorrectlyIdentifies():
+    player = Player([Card("K", "Hearts"), Card("A", "Hearts")])
+    assert player.checkBlackjack() == True
 
-    player = Player([Card("A", "Hearts"), Card("K", "Hearts")])
-    player.checkHand()
-    assert player.isBusted() == False
-    assert player.hasBlackjack() == True
+def test_checkBlackjack_WhenNoBlackjack_CorrectlyIdentifies():
+    player = Player([Card("A", "Hearts"), Card("9", "Hearts")])
+    assert player.checkBlackjack() == False
 
-def test_checkHand_WhenBusted_CorrectlyDetects():
+def test_checkBust_WhenBust_CorrectlyIdentifies():
+    player = Player([Card("K", "Hearts"), Card("K", "Hearts"), Card("K", "Hearts")])
+    assert player.checkBust() == True
 
-    player = Player([Card("K", "Hearts"), Card("K", "Hearts"), Card("2", "Hearts")])
-    player.checkHand()
-    assert player.isBusted() == True
-    assert player.hasBlackjack() == False
+def test_checkBust_WhenNoBust_CorrectlyIdentifies():
+    player = Player([Card("K", "Hearts"), Card("K", "Hearts")])
+    assert player.checkBust() == False
 
 
 
