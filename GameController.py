@@ -18,14 +18,17 @@ class GameController:
 
         while(not table.getDeck().isEmpty()):
 
-            # Displaying current cards
-            cardsString = ""
-            for card in player.getCards():
-                cardsString += str(card)
-            print(f"Cards: {cardsString}")
+            for player in table.getSeats().values():
+                if player.isPlaying():
 
-            # Hit or stay
-            choice = input("Hit (1) or Stay (2): ")
+                    # Displaying current cards
+                    cardsString = ""
+                    for card in player.getCards():
+                        cardsString += str(card)
+                    print(f"Cards: {cardsString}")
+
+                    # Hit or stay
+                    choice = input("Hit (1) or Stay (2): ")
 
 
 

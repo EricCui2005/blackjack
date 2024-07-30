@@ -6,11 +6,11 @@ from typing import Dict
 
 # Class to describe a table of blackjack
 class Table:
-    def __init__(self, numSeats: int = 3, playerWins: int = 0, dealerWins: int = 0):
+    def __init__(self, numPlayers: int = 3, playerWins: int = 0, dealerWins: int = 0):
         self.gameDeck = Deck()
         self.dealer = Player()
-        self.numSeats = numSeats
-        self.seats: Dict[int, Player] = {0: None, 1: None, 2: None}
+        self.numPlayers = numPlayers
+        self.players: List[Player] = []
         self.playerWins = 0
         self.dealerWins = 0
     
@@ -25,11 +25,11 @@ class Table:
     def getDeck(self):
         return self.gameDeck
     def getPlayer(self, seat: int):
-        return self.seats[seat]
+        return self.players[seat]
     def getDealer(self):
         return self.dealer
-    def getSeats(self):
-        return self.seats
+    def getPlayers(self):
+        return self.players
             
     # Function to check for a blackjack
     def checkBlackJack(self, value):
@@ -39,8 +39,8 @@ class Table:
     def initGame(self):
 
         # Adding players to table
-        for i in range(self.numSeats):
-            self.seats[i] = Player([], 500)
+        for i in range(self.numPlayers):
+            self.players.append(Player([], 500))
         
         # Shuffling and dealing 2 cards to each player (including the dealer)
         self.gameDeck.deckShuffle()
@@ -49,10 +49,8 @@ class Table:
     # Initializes the card dealing of a round   
     def initRound(self):
         for i in range(2):
-            for seat in self.seats:
-                player = self.seats[seat]
-                if player:
-                    player.newCard(self.gameDeck.topCard())
+            for player in self.players:
+                player.newCard(self.gameDeck.topCard())
             self.dealer.newCard(self.gameDeck.topCard())
     
         

@@ -30,9 +30,8 @@ def test_initGame():
     # Checking all players have two cards and all cards are different
     properInit = True
     cardsOnTable = set()
-    seats = table.getSeats()
-    for seat in seats:
-        player = seats[seat]
+    players = table.getPlayers()
+    for player in players:
         if len(player.getCards()) != 2:
             properInit = False
             break
