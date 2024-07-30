@@ -7,6 +7,7 @@ class Player:
     def __init__(self, cards: List[Card] = [], cash: int = 0):
         self.cards = cards
         self.cash = cash
+        self.playing = True
     
     def __str__(self) -> str:
         cards = ""
@@ -17,10 +18,8 @@ class Player:
     # Accessors
     def getCards(self):
         return self.cards
-    def isBusted(self):
-        return self.bust
-    def hasBlackjack(self):
-        return self.blackjack
+    def isPlaying(self):
+        return self.playing
     
     # Add a new card to the player's hand
     def newCard(self, card: Card):
@@ -60,6 +59,7 @@ class Player:
         sums = self.sumHand()
         for sum in sums:
             if sum == 21:
+                self.playing = False
                 return True
         return False
     
@@ -67,5 +67,6 @@ class Player:
     def checkBust(self):
         sums = self.sumHand()
         if all(sum > 21 for sum in sums):
+            self.playing = False
             return True
         return False
