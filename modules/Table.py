@@ -11,15 +11,13 @@ class Table:
         self.dealer = Player()
         self.numPlayers = numPlayers
         self.players: List[Player] = []
+        self.activePlayersStatus = False
         self.playerWins = 0
         self.dealerWins = 0
     
     # To string method
     def __str__(self) -> str:
-        table = str(self.gameDeck)
-        for seat in self.seats:
-            table += f"{str(self.seats[seat])}\n" 
-        return table
+        pass
     
     # Accessors
     def getDeck(self):
@@ -30,6 +28,12 @@ class Table:
         return self.dealer
     def getPlayers(self):
         return self.players
+    def getActivePlayersStatus(self):
+        return self.activePlayersStatus
+    
+    # Setters
+    def setActivePlayersStatus(self, status):
+        self.activePlayersStatus = status
             
     # Function to check for a blackjack
     def checkBlackJack(self, value):
@@ -40,16 +44,17 @@ class Table:
 
         # Adding players to table
         for i in range(self.numPlayers):
-            self.players.append(Player([], 500))
+            self.players.append(Player([], 500, f"Player{i}"))
         
         # Shuffling and dealing 2 cards to each player (including the dealer)
         self.gameDeck.deckShuffle()
-        self.initRound()
 
     # Initializes the card dealing of a round   
     def initRound(self):
+        self.activePlayersStatus = True
         for i in range(2):
             for player in self.players:
+                player.setRoundWin(False)
                 player.newCard(self.gameDeck.topCard())
             self.dealer.newCard(self.gameDeck.topCard())
     
