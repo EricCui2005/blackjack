@@ -21,6 +21,10 @@ class Player:
     def isPlaying(self):
         return self.playing
     
+    # Function to signal the player will stay
+    def stay(self):
+        self.playing = False
+    
     # Add a new card to the player's hand
     def newCard(self, card: Card):
         self.cards.append(card)

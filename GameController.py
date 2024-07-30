@@ -9,7 +9,7 @@ class GameController:
     def terminalGame(self):
 
         # Initializing the game
-        self.table = Table(1, 0, 0)
+        self.table = Table(2, 0, 0)
         table = self.table
         table.initGame()
         dealer = table.getDealer()
@@ -18,7 +18,9 @@ class GameController:
 
         while(not table.getDeck().isEmpty()):
 
-            for player in table.getSeats().values():
+            for player in table.getPlayers():
+                
+                # Cards only offered to players that are still in play
                 if player.isPlaying():
 
                     # Displaying current cards
