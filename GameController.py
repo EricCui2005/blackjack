@@ -18,10 +18,6 @@ class GameController:
 
         while(not table.getDeck().isEmpty()):
 
-            
-            # Inputting bet
-            input("Enter bet: ")
-
             # Displaying current cards
             cardsString = ""
             for card in player.getCards():

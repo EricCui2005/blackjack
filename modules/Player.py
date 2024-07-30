@@ -7,6 +7,8 @@ class Player:
     def __init__(self, cards: List[Card] = [], cash: int = 0):
         self.cards = cards
         self.cash = cash
+        self.bust = False
+        self.blackjack = False
     
     def __str__(self) -> str:
         cards = ""
@@ -14,9 +16,13 @@ class Player:
             cards += f"{str(card)} "
         return f"| Cash: {self.cash} Cards: {cards} |"
 
-    # Accessor for player's cards
+    # Accessors
     def getCards(self):
         return self.cards
+    def isBusted(self):
+        return self.bust
+    def hasBlackjack(self):
+        return self.blackjack
     
     # Add a new card to the player's hand
     def newCard(self, card: Card):
@@ -49,5 +55,19 @@ class Player:
         else:
             self.sumRec(cards, curSum + card.rankValueKey[card.get_rank()], sums)
             cards.append(card)
-
         return
+    
+    # Function to check whether the player busted or has a blackjack
+    def checkHand(self):
+        sums = self.sumHand()
+
+        # Checking for a bust
+        if all(sum > 21 for sum in sums):
+            self.bust = True
+            return
+
+        # Checking for blackjack
+        for sum in sums:
+            if sum == 21:
+                self.blackjack = True
+                return

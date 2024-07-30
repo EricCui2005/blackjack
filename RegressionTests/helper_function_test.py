@@ -44,6 +44,19 @@ def test_initGame():
     # Final assertion
     assert properInit == True
             
+def test_checkHand_WhenGivenBlackJack_CorrectlyDetects():
+
+    player = Player([Card("A", "Hearts"), Card("K", "Hearts")])
+    player.checkHand()
+    assert player.isBusted() == False
+    assert player.hasBlackjack() == True
+
+def test_checkHand_WhenBusted_CorrectlyDetects():
+
+    player = Player([Card("K", "Hearts"), Card("K", "Hearts"), Card("2", "Hearts")])
+    player.checkHand()
+    assert player.isBusted() == True
+    assert player.hasBlackjack() == False
 
 
 
